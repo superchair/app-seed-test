@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  webserver:
+    hostname: current-inventory-service-api
+    build:
+      context: ./devops/docker
+      dockerfile: Dockerfile.php_7.4_apache
+    volumes:
+      - ./vendor:/var/www/vendor
+      - ./:/var/www
+      - composer-cache:/root/.composer/cache
+    command: sh -c "composer install && apache2-foreground"
+
+volumes:
+  composer-cache:
+    external:
+      name: dev-env_composer-cache
+
+networks:
+  default:
+    external:
+      name: mobials

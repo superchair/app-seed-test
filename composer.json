@@ -1,0 +1,32 @@
+{
+    "name": "abrown/app-seed-test",
+    "type": "project",
+    "config": {
+        "github-oauth": {
+            "github.com": "917697ecbbaf3c23977bc190c47a3bdf9ae6e3be"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "IS\\AppSeedTest\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\IS\\AppSeedTest\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "mockery/mockery": "^1.5"
+    },
+    "require": {
+        "slim/slim": "^4.9",
+        "slim/psr7": "^1.5"
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "docker-compose up -d"
+        ]
+    }
+}
